@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h3>Here is some of my code I programed in one of my IT classes at Mizzou! 
+    This progam estimates the coating for cylinders.</h3>
+<p1>
+    <pre style= "border-style: dashed; border-color: blueviolet;">
+        <code>
+            from math import pi
+            import math
+
+            def get_radius_from_user():
+                while (True):
+                    try:
+                        radius = float(input("What is the radius: "))
+                    if (radius < 0):
+                        print("Radius must be a positive number.")
+                        continue
+                    break
+                except ValueError:
+                    print("Only numbers may be entered.")
+
+                return radius
+
+            def get_height_from_user():
+                while (True):
+                    try:
+                        height = float(input("What is the height: "))
+                        if (height < 0):
+                            print("Height must be a positive number.")
+                            continue
+                        break
+                    except ValueError:
+                        print("Only numbers may be entered.")
+
+                return height
+
+            def get_cost_per_pint_from_user():
+                while(True):
+                    try:
+                        cost = float(input("What is the cost per pint of coating: "))
+                        if (cost < 0):
+                            print("Cost must be a positive number.")
+                            continue
+                        break
+                    except ValueError:
+                        print("Only numbers may be entered.")
+
+                return cost
+
+            def calculate_surface_area(radius,height):
+                area = 2 * pi * radius * height + 2 * pi * radius ** 2
+                return area
+
+            def calculate_number_of_pints_required(area):
+                pints = int(math.ceil(area/50))
+                return pints
+
+            def calculate_price_of_coating_per_pint(pints,cost):
+                price = pints * cost
+                return price
+
+            def generate_report(pints, price):
+                formatted_float = "${:,.2f}".format(price)
+                print(pints, "pints are required costing $",formatted_float)
+
+            def main():
+                radius = get_radius_from_user()
+                height = get_height_from_user()
+                cost = get_cost_per_pint_from_user()
+                area = calculate_surface_area(radius,height)
+                pints = calculate_number_of_pints_required(area)
+                price = calculate_price_of_coating_per_pint(pints,cost)
+                generate_report(pints,price)
+
+            do_calculation = True
+            while (do_calculation):
+                radius = get_radius_from_user()
+                height = get_height_from_user()
+                cost = get_cost_per_pint_from_user()
+                area = calculate_surface_area(radius,height)
+                pints = calculate_number_of_pints_required(area)
+                price = calculate_price_of_coating_per_pint(pints,cost)
+                generate_report(pints,price)
+                another_calculation = input("Do you want to perform another calculation? (y/n)")
+                if (another_calculation != "y"):
+                    do_calculation = False
+
+
+            main()
+
+        </code>
+    </pre>
+</p1>
+
+</body>
+</html>
